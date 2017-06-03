@@ -1,7 +1,7 @@
 package com.example.andriod.parkingapp.service;
 
 
-import com.example.andriod.parkingapp.data.userInfo.User;
+import com.example.andriod.parkingapp.data.user.User;
 
 import java.util.List;
 

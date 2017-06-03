@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.andriod.parkingapp.data.userInfo.User;
+import com.example.andriod.parkingapp.data.user.User;
 import com.example.andriod.parkingapp.service.UserAPIService;
 
 import java.util.List;

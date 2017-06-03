@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.andriod.parkingapp.R;
 import com.example.andriod.parkingapp.data.saver.TimeStatus;
-import com.example.andriod.parkingapp.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,11 @@ public class AdapterParkingSaver extends RecyclerView.Adapter<AdapterParkingSave
     private LayoutInflater inflater;
     //================about ItemClickCallback==========//
     private ItemClickCallback itemClickCallback;
+
+    private static final String[] timeSection=
+            {"0:00 - 6:00", "6:00 - 8:00", "8:00 - 10:00",
+                    "10:00 - 12:00", "12:00 - 14:00", "14:00 - 16:00",
+                    "16:00 - 18:00", "18:00 - 21:00", "21:00 - 24:00"};
 
     public AdapterParkingSaver(List<TimeStatus> listData, Context c) {
         this.listData = listData;
@@ -68,30 +72,33 @@ public class AdapterParkingSaver extends RecyclerView.Adapter<AdapterParkingSave
         System.out.println("onBindViewHolder============");
 
         TimeStatus item = listData.get(position);
+        //TEST==============
+        System.out.println("-------------------------------");
+        System.out.println(item.get_0006());
+        System.out.println(item.get_0608());
+        System.out.println(item.get_0810());
+        System.out.println(item.get_1012());
+        System.out.println(item.get_1214());
+        System.out.println(item.get_1416());
+        System.out.println(item.get_1618());
+        System.out.println(item.get_1821());
+        System.out.println(item.get_2124());
+        System.out.println("-------------------------------");
+        //==================
      //   holder.tv_parkingSaverID.setText(item.getPs_ID());
-        holder.tv_parkingSaverID.setText(position+1);
-        //TODO we can get the reservation-information from "listData.get(position)"
-//        List<String>  statusList = new ArrayList<String>();
-//        statusList.add(item.getTimeSectionFrom0().isIfReservation());
-//        statusList.add(item.getTimeSectionFrom6().isIfReservation());
-//        statusList.add(item.getTimeSectionFrom8().isIfReservation());
-//        statusList.add(item.getTimeSectionFrom10().isIfReservation());
-//        statusList.add(item.getTimeSectionFrom12().isIfReservation());
-//        statusList.add(item.getTimeSectionFrom14().isIfReservation());
-//        statusList.add(item.getTimeSectionFrom16().isIfReservation());
-        System.out.println("item.getTimeSectionFrom0().isIfReservation()============  "+ item.getTimeSectionFrom0().isIfReservation());
-        //TODO: hier been added in order to add color,for each button add these two if sentence
+        holder.tv_parkingSaverID.setText(""+ (position+1));
+        //TODO
         if(item.get_0006().equals("true")) {
             holder.bt_Row_1_Col_1.setBackgroundColor(Color.parseColor("#E43F3F"));
         }
         if(item.get_0006().equals("false")) {
             holder.bt_Row_1_Col_1.setBackgroundColor(Color.parseColor("#B3E5FC"));
         }
-        //TODO HUUE
+        // handing yellow
         if(item.get_0006().equals("handling")){
             holder.bt_Row_1_Col_1.setBackgroundColor(Color.parseColor("#FFEB3B"));
         }
-        holder.bt_Row_1_Col_1.setText(item.getTimeSectionFrom0().getTimeSection());
+        holder.bt_Row_1_Col_1.setText(timeSection[0]);
 
 
         if(item.get_0608().equals("true")) {
@@ -100,9 +107,10 @@ public class AdapterParkingSaver extends RecyclerView.Adapter<AdapterParkingSave
         if(item.get_0608().equals("false")) {
             holder.bt_Row_1_Col_2.setBackgroundColor(Color.parseColor("#B3E5FC"));
         }
-        holder.bt_Row_1_Col_2.setText(item.getTimeSectionFrom6().getTimeSection());
-
-
+        if(item.get_0608().equals("handling")){
+            holder.bt_Row_1_Col_2.setBackgroundColor(Color.parseColor("#FFEB3B"));
+        }
+        holder.bt_Row_1_Col_2.setText(timeSection[1]);
 
         if(item.get_0810().equals("true")) {
             holder.bt_Row_1_Col_3.setBackgroundColor(Color.parseColor("#E43F3F"));
@@ -110,8 +118,10 @@ public class AdapterParkingSaver extends RecyclerView.Adapter<AdapterParkingSave
         if(item.get_0810().equals("false")) {
             holder.bt_Row_1_Col_3.setBackgroundColor(Color.parseColor("#B3E5FC"));
         }
-        holder.bt_Row_1_Col_3.setText(item.getTimeSectionFrom8().getTimeSection());
-
+        if(item.get_0810().equals("handling")){
+            holder.bt_Row_1_Col_3.setBackgroundColor(Color.parseColor("#FFEB3B"));
+        }
+        holder.bt_Row_1_Col_3.setText(timeSection[2]);
 
         if(item.get_1012().equals("true")) {
             holder.bt_Row_2_Col_1.setBackgroundColor(Color.parseColor("#E43F3F"));
@@ -119,16 +129,22 @@ public class AdapterParkingSaver extends RecyclerView.Adapter<AdapterParkingSave
         if(item.get_1012().equals("false")) {
             holder.bt_Row_2_Col_1.setBackgroundColor(Color.parseColor("#B3E5FC"));
         }
-        holder.bt_Row_2_Col_1.setText(item.getTimeSectionFrom10().getTimeSection());
+        if(item.get_1012().equals("handling")){
+            holder.bt_Row_2_Col_1.setBackgroundColor(Color.parseColor("#FFEB3B"));
+        }
+        holder.bt_Row_2_Col_1.setText(timeSection[3]);
 
 
         if(item.get_1214().equals("true")) {
             holder.bt_Row_2_Col_2.setBackgroundColor(Color.parseColor("#E43F3F"));
         }
-        if(item.get_1214(.equals("false")) {
+        if(item.get_1214().equals("false")) {
             holder.bt_Row_2_Col_2.setBackgroundColor(Color.parseColor("#B3E5FC"));
         }
-        holder.bt_Row_2_Col_2.setText(item.getTimeSectionFrom12().getTimeSection());
+        if(item.get_1214().equals("handling")){
+            holder.bt_Row_2_Col_2.setBackgroundColor(Color.parseColor("#FFEB3B"));
+        }
+        holder.bt_Row_2_Col_2.setText(timeSection[4]);
 
 
         if(item.get_1416().equals("true")) {
@@ -137,7 +153,10 @@ public class AdapterParkingSaver extends RecyclerView.Adapter<AdapterParkingSave
         if(item.get_1416().equals("false")) {
             holder.bt_Row_2_Col_3.setBackgroundColor(Color.parseColor("#B3E5FC"));
         }
-        holder.bt_Row_2_Col_3.setText(item.getTimeSectionFrom14().getTimeSection());
+        if(item.get_1416().equals("handling")){
+            holder.bt_Row_2_Col_3.setBackgroundColor(Color.parseColor("#FFEB3B"));
+        }
+        holder.bt_Row_2_Col_3.setText(timeSection[5]);
 
 
         if(item.get_1618().equals("true")) {
@@ -146,7 +165,10 @@ public class AdapterParkingSaver extends RecyclerView.Adapter<AdapterParkingSave
         if(item.get_1618().equals("false")) {
             holder.bt_Row_3_Col_1.setBackgroundColor(Color.parseColor("#B3E5FC"));
         }
-        holder.bt_Row_3_Col_1.setText(item.getTimeSectionFrom16().getTimeSection());
+        if(item.get_1618().equals("handling")){
+            holder.bt_Row_3_Col_1.setBackgroundColor(Color.parseColor("#FFEB3B"));
+        }
+        holder.bt_Row_3_Col_1.setText(timeSection[6]);
 
 
         if(item.get_1821().equals("true")) {
@@ -155,7 +177,10 @@ public class AdapterParkingSaver extends RecyclerView.Adapter<AdapterParkingSave
         if(item.get_1821().equals("false")) {
             holder.bt_Row_3_Col_2.setBackgroundColor(Color.parseColor("#B3E5FC"));
         }
-        holder.bt_Row_3_Col_2.setText(item.getTimeSectionFrom18().getTimeSection());
+        if(item.get_1821().equals("handling")){
+            holder.bt_Row_3_Col_2.setBackgroundColor(Color.parseColor("#FFEB3B"));
+        }
+        holder.bt_Row_3_Col_2.setText(timeSection[7]);
 
 
         if(item.get_2124().equals("true")) {
@@ -164,7 +189,10 @@ public class AdapterParkingSaver extends RecyclerView.Adapter<AdapterParkingSave
         if(item.get_2124().equals("false")) {
             holder.bt_Row_3_Col_3.setBackgroundColor(Color.parseColor("#B3E5FC"));
         }
-        holder.bt_Row_3_Col_3.setText(item.getTimeSectionFrom21().getTimeSection());
+        if(item.get_2124().equals("handling")){
+            holder.bt_Row_3_Col_3.setBackgroundColor(Color.parseColor("#FFEB3B"));
+        }
+        holder.bt_Row_3_Col_3.setText(timeSection[8]);
 
     }
 
