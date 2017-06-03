@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Material Login Example</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="my_infos">My Information</string>
+    <string name="parking_infos">My Parking Reservation</string>
+</resources>
